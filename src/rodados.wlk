@@ -25,3 +25,9 @@ class ChevroletCorsa {
 	method moverAbajo(){self.position(self.position().down(1)) posicionesGuardadas.add(self.position())}
 }
 
+object rojo{}
+object verde{}
+object negro{}
+object azul{}
+object beige{}
+object blanco{}

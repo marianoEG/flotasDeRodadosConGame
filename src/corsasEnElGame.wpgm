@@ -11,5 +11,10 @@ program corsasEnElGame {
 	keyboard.left().onPressDo{corsa.moverIzquierda()}
 	keyboard.up().onPressDo{corsa.moverArriba()}
 	keyboard.down().onPressDo{corsa.moverAbajo()}
+	keyboard.a().onPressDo{corsa.color(azul) corsa.image("autitoazul.png")}
+	keyboard.n().onPressDo{corsa.color(negro) corsa.image("autitonegro.png")}
+	keyboard.v().onPressDo{corsa.color(verde) corsa.image("autitoverde.png")}
+	keyboard.b().onPressDo{corsa.color(blanco) corsa.image("autitoblanco.png")}
+	keyboard.r().onPressDo{corsa.color(rojo) corsa.image("autitorojo.png")}
 	game.start()
 }
