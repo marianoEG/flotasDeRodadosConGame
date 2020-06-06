@@ -16,5 +16,6 @@ program corsasEnElGame {
 	keyboard.v().onPressDo{corsa.color(verde) corsa.image("autitoverde.png")}
 	keyboard.b().onPressDo{corsa.color(blanco) corsa.image("autitoblanco.png")}
 	keyboard.r().onPressDo{corsa.color(rojo) corsa.image("autitorojo.png")}
+	game.ground("piso.png")
 	game.start()
 }
