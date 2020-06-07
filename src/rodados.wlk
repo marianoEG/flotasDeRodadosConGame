@@ -4,7 +4,7 @@ class ChevroletCorsa {
 	var property image 
 	var property color
 	var property position
-	const property posicionesGuardadas = [] 
+	var property posicionesGuardadas = [] 
 	
 	method capacidad(){return 4}
 	method velocidad(){return 150}

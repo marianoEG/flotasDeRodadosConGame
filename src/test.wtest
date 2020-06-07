@@ -1,3 +1,4 @@
+import wollok.game.*
 import pedidos.*
 import rodados.*
 import dependencia.*
@@ -28,4 +29,13 @@ test "dependencia"{
 	dependencia.relajarTodosLosPedidos()
 	assert.equals(pedido1.tiempoMaximo(),9)
 	assert.equals(pedido2.tiempoMaximo(),9)
+}
+
+test "corsas para el game"{
+	var corsa1 = new ChevroletCorsa(color=rojo,position=game.at(3,3),image="autitorojo.png",posicionesGuardadas=[game.at(3,3)])
+	corsa1.moverDerecha()
+	corsa1.moverDerecha()
+	assert.that(corsa1.pasoPor(game.at(4,3)))
+	assert.that(corsa1.pasoPorFila(5))
+	assert.that(corsa1.recorrioFilas([3,4,5]))
 }

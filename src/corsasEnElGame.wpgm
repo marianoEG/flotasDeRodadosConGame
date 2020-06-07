@@ -1,12 +1,22 @@
 import wollok.game.*
 import rodados.*
 program corsasEnElGame {
-	var corsa = new ChevroletCorsa(color="rojo",position=game.at(3,3),image="autitorojo.png")
+	var corsa1 = new ChevroletCorsa(color=rojo,position=game.at(3,3),image="autitorojo.png")
+	var corsa2 = new ChevroletCorsa(color=verde,position=game.at(4,3),image="autitoverde.png")
+	var corsa3 = new ChevroletCorsa(color=negro,position=game.at(5,3),image="autitonegro.png")
+	var corsa 
 	game.title("Corsa 2033")
 	
 	game.height(10)
 	game.width(10)
-	game.addVisual(corsa)
+	game.addVisual(corsa1)
+	game.addVisual(corsa2)
+	game.addVisual(corsa3)
+	
+	keyboard.num1().onPressDo{corsa = corsa1}
+	keyboard.num2().onPressDo{corsa = corsa2}
+	keyboard.num3().onPressDo{corsa = corsa3}
+	keyboard.num4().onPressDo{}
 	keyboard.right().onPressDo{corsa.moverDerecha()}
 	keyboard.left().onPressDo{corsa.moverIzquierda()}
 	keyboard.up().onPressDo{corsa.moverArriba()}
@@ -16,6 +26,8 @@ program corsasEnElGame {
 	keyboard.v().onPressDo{corsa.color(verde) corsa.image("autitoverde.png")}
 	keyboard.b().onPressDo{corsa.color(blanco) corsa.image("autitoblanco.png")}
 	keyboard.r().onPressDo{corsa.color(rojo) corsa.image("autitorojo.png")}
+	
 	game.ground("piso.png")
+	
 	game.start()
 }
