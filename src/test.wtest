@@ -1,13 +1,31 @@
 import pedidos.*
 import rodados.*
+import dependencia.*
 test "pedido" {
-	const pedido = new Pedido(distanciaARecorrer=960,tiempoMaximo=8,cantidadPasajeros=4,coloresIncompatibles=["azul","negro"])
-	const cachito = new ChevroletCorsa(color = "rojo")
+	const pedido = new Pedido(distanciaARecorrer=960,tiempoMaximo=8,cantidadPasajeros=4,coloresIncompatibles=[azul,negro])
+	const cachito = new ChevroletCorsa(color = rojo)
 	assert.that(pedido.puedeSatisfacer(cachito))
-	pedido.coloresIncompatibles().add("rojo")
+	pedido.coloresIncompatibles().add(rojo)
 	assert.notThat(pedido.puedeSatisfacer(cachito))
 	pedido.acelerar()
 	pedido.acelerar()
-	pedido.coloresIncompatibles(["azul","negro"])
+	pedido.coloresIncompatibles([azul,negro])
 	assert.notThat(pedido.puedeSatisfacer(cachito))
+}
+
+test "dependencia"{
+	const pedido1 = new Pedido(distanciaARecorrer=960,tiempoMaximo=8,cantidadPasajeros=4,coloresIncompatibles=[azul,negro])
+	const pedido2 = new Pedido(distanciaARecorrer=960,tiempoMaximo=8,cantidadPasajeros=4,coloresIncompatibles=[azul,negro,rojo])
+	const cachito1 = new ChevroletCorsa(color = rojo)
+	const cachito2 = new ChevroletCorsa(color = negro)
+	const cachito3 = new ChevroletCorsa(color = azul)
+	const dependencia = new Dependencia(flota=[cachito1,cachito2,cachito3],pedidos=[pedido1,pedido2])
+	assert.equals(dependencia.totalPasajeros(),8)
+	assert.that(dependencia.puedeSatisfacer(pedido1))
+	assert.equals(dependencia.pedidosQueNoPuedeSatisfacer(),[pedido2])
+	assert.that(dependencia.esIncompatibleEnTodos(azul))
+	assert.notThat(dependencia.esIncompatibleEnTodos(rojo))
+	dependencia.relajarTodosLosPedidos()
+	assert.equals(pedido1.tiempoMaximo(),9)
+	assert.equals(pedido2.tiempoMaximo(),9)
 }
